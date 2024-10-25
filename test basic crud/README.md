@@ -1,5 +1,7 @@
 # TEST BASIC CRUD
 
+build with express, postgresql 14, typescript
+
 ### USAGE
 
 - clone the project :
