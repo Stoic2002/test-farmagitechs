@@ -1,5 +1,7 @@
 # TEST BASIC CRUD
 
+build with express, mysql2, typescript
+
 ### USAGE
 
 - clone the project :
