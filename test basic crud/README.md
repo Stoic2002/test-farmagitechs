@@ -1,6 +1,6 @@
 ### TEST BASIC CRUD
 
-## USAGE
+# USAGE
 
 - clone the project :
 
@@ -54,17 +54,18 @@ npm run migrate
 ``` bash
 npm run seed
 ```
-default user:
+- default user:
+```
 username : admin
-passowrd : admin
-
+passowrd : admin 
+```
 - run server :
 
 ``` bash
 npm run dev
 ```
 
-## POSTMAN DOCUMENTATION
+# POSTMAN DOCUMENTATION
 
 https://documenter.getpostman.com/view/29122257/2sAY4si4Pc
 
