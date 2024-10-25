@@ -29,11 +29,9 @@ export class SaleController {
 
     getAll = async (req: Request, res: Response) => {
         try {
-            // Extract and validate date range parameters first
             const startDate = req.query.startDate as string;
             const endDate = req.query.endDate as string;
 
-            // Validate date format if provided
             if (startDate && !isValidDateFormat(startDate)) {
                 return res.status(400).json({
                     statusCode: 400,
@@ -48,7 +46,6 @@ export class SaleController {
                 });
             }
 
-            // Validate date range logic
             if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
                 return res.status(400).json({
                     statusCode: 400,
@@ -56,11 +53,9 @@ export class SaleController {
                 });
             }
 
-            // Then extract and validate pagination parameters
             const page = Math.max(1, parseInt(req.query.page as string) || 1);
             const limit = Math.max(1, Math.min(100, parseInt(req.query.limit as string) || 10));
 
-            // Get sales with filters
             const sales = await this.saleService.getAllSales({
                 page,
                 limit,
@@ -70,12 +65,10 @@ export class SaleController {
                 } : undefined
             });
 
-            // Format date range for display
             const rangeTime = startDate && endDate 
                 ? formatDateRange(startDate, endDate)
                 : null;
 
-            // Format response according to desired structure
             res.status(200).json({
                 statusCode: 200,
                 message: 'Sales retrieved successfully',

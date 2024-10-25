@@ -9,8 +9,7 @@ export class SaleService {
         
         try {
             await client.query('BEGIN');
-            
-            // Calculate total amount
+
             let totalAmount = 0;
             for (const item of data.items) {
                 const productResult = await client.query('SELECT price FROM products WHERE id = $1', [item.product_id]);
@@ -20,7 +19,6 @@ export class SaleService {
                 totalAmount += productResult.rows[0].price * item.quantity;
             }
 
-            // Create sale with customer name and phone
             const saleResult = await client.query(saleQueries.createSale, [
                 data.buyer_name,
                 data.buyer_phone,
@@ -28,7 +26,6 @@ export class SaleService {
             ]);
             const sale = saleResult.rows[0];
 
-            // Create sale details
             for (const item of data.items) {
                 const productResult = await client.query('SELECT price FROM products WHERE id = $1', [item.product_id]);
                 const pricePerUnit = productResult.rows[0].price;
@@ -71,7 +68,6 @@ export class SaleService {
             const startDate = dateRange?.startDate || null;
             const endDate = dateRange?.endDate || null;
             
-            // Get sales with filters
             const salesPromise = pool.query(saleQueries.getAllSales, [
                 limit,
                 offset,
@@ -79,7 +75,6 @@ export class SaleService {
                 endDate
             ]);
 
-            // Get total count with same filters
             const countPromise = pool.query(saleQueries.countSales, [
                 startDate,
                 endDate

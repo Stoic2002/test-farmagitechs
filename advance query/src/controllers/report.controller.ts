@@ -19,7 +19,6 @@ export class ReportController {
                 kategori: string;
             };
 
-            // Get percentage area data first
             const percentageArea = await this.reportService.getPercentageArea(id, startDate, endDate);
 
             const result: ReportResponse = {
