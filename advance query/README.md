@@ -1,6 +1,6 @@
-### TEST BASIC CRUD
+# TEST BASIC CRUD
 
-## USAGE
+### USAGE
 
 - clone the project :
 
@@ -42,7 +42,7 @@ MYSQL_PORT=''
 npm run dev
 ```
 
-## POSTMAN DOCUMENTATION
+### POSTMAN DOCUMENTATION
 
 https://documenter.getpostman.com/view/29122257/2sAY4si4Pd
 
